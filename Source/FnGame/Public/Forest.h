@@ -33,7 +33,7 @@ public:
   AForest();
 
   UFUNCTION(BlueprintPure)
-  FFootpath GetFootpathByName(const FString& Name) const { return *Footpaths.Find(Name); }
+  bool GetFootpathByName(const FString& Name, FFootpath& Footpath) const;
 
   virtual void PostInitializeComponents() override;
 

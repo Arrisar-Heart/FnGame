@@ -30,3 +30,14 @@ void AForest::BeginPlay()
 
   GM->Forest = this;
 }
+
+bool AForest::GetFootpathByName(const FString& Name, FFootpath& Footpath) const
+{
+  const FFootpath* RawFootpath = Footpaths.Find(Name);
+
+  if (RawFootpath == nullptr) { return false; }
+
+  Footpath = FFootpath(RawFootpath->Path, RawFootpath->AnimalType);
+
+  return true;
+}
