@@ -14,13 +14,14 @@ class FNGAME_API AAnimal : public AActor
 public:
   AAnimal();
 
-  virtual void Tick(float DeltaTime) override;
+  UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+  void OnSpawn();
+
+  UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+  void OnDespawn();
 
   UFUNCTION(BlueprintGetter)
   FORCEINLINE class UStaticMeshComponent* GetBody() const { return Body; }
-
-protected:
-  virtual void BeginPlay() override;
 
 private:
   UPROPERTY(VisibleDefaultsOnly, BlueprintGetter = GetBody)

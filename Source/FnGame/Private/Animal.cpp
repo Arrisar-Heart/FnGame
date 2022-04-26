@@ -9,13 +9,3 @@ AAnimal::AAnimal()
   Body = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Body"));
   RootComponent = Body;
 }
-
-void AAnimal::BeginPlay()
-{
-  Super::BeginPlay();
-}
-
-void AAnimal::Tick(float DeltaTime)
-{
-  Super::Tick(DeltaTime);
-}
