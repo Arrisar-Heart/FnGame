@@ -6,6 +6,9 @@ AAnimal::AAnimal()
 {
   PrimaryActorTick.bCanEverTick = true;
 
+  Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+  RootComponent = Root;
+
   Body = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Body"));
-  RootComponent = Body;
+  Body->SetupAttachment(RootComponent);
 }

@@ -21,9 +21,15 @@ public:
   void OnDespawn();
 
   UFUNCTION(BlueprintGetter)
+  FORCEINLINE class USceneComponent* GetRoot() const { return Root; }
+
+  UFUNCTION(BlueprintGetter)
   FORCEINLINE class UStaticMeshComponent* GetBody() const { return Body; }
 
 private:
+  UPROPERTY(VisibleDefaultsOnly, BlueprintGetter = GetRoot)
+  class USceneComponent* Root;
+
   UPROPERTY(VisibleDefaultsOnly, BlueprintGetter = GetBody)
   class UStaticMeshComponent* Body;
 
