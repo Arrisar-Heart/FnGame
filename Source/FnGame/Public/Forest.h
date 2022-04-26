@@ -34,6 +34,9 @@ public:
   UFUNCTION(BlueprintGetter)
   FORCEINLINE class AMainGM* GetGM() const { return GM; }
 
+protected:
+  virtual void BeginPlay() override;
+
 private:
   TMap<FString, class UFootpath*> Paths;
 

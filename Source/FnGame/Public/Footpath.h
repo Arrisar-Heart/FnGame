@@ -6,7 +6,7 @@
 #include "Components/SplineComponent.h"
 #include "Footpath.generated.h"
 
-UCLASS(meta=(BlueprintSpawnableComponent))
+UCLASS(ClassGroup=Utility, ShowCategories = (Mobility), HideCategories = (Physics, Collision, Lighting, Rendering, Mobile), meta=(BlueprintSpawnableComponent))
 class FNGAME_API UFootpath : public USplineComponent
 {
   GENERATED_BODY()

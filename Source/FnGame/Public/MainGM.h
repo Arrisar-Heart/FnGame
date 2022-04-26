@@ -12,11 +12,17 @@ class FNGAME_API AMainGM : public AGameMode
   GENERATED_BODY()
 
 public:
+  UFUNCTION(BlueprintCallable)
+  bool TryToSpawnAnimal(const FString& PathName) const;
+
   UFUNCTION(BlueprintGetter)
   FORCEINLINE TSubclassOf<class UMainUI> GetMainUIClass() const { return MainUIClass; }
 
   UFUNCTION(BlueprintGetter)
   FORCEINLINE class UMainUI* GetMainUI() const { return MainUI; }
+
+  UPROPERTY(BlueprintReadWrite)
+  class AForest* Forest;
 
 protected:
   virtual void BeginPlay() override;

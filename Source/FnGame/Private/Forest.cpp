@@ -38,6 +38,13 @@ void AForest::PostInitializeComponents()
   GM = GetWorld()->GetAuthGameMode<AMainGM>();
 }
 
+void AForest::BeginPlay()
+{
+  Super::BeginPlay();
+
+  GM->Forest = this;
+}
+
 TArray<FString> AForest::GetPaths() const
 {
   TArray<FString> Keys;
