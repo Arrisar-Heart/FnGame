@@ -2,7 +2,7 @@
 
 #include "Forest.h"
 #include "MainGM.h"
-#include "Components/SplineComponent.h"
+#include "Footpath.h"
 
 AForest::AForest()
 {
@@ -27,7 +27,7 @@ void AForest::PostInitializeComponents()
 
   for (USceneComponent* RawComponent : RawComponents)
   {
-    USplineComponent* Path = Cast<USplineComponent>(RawComponent);
+    UFootpath* Path = Cast<UFootpath>(RawComponent);
 
     if (Path != nullptr)
     {
@@ -46,7 +46,7 @@ TArray<FString> AForest::GetPaths() const
   return Keys;
 }
 
-USplineComponent* AForest::GetPathByName(const FString& Name) const
+UFootpath* AForest::GetPathByName(const FString& Name) const
 {
   return Paths.FindRef(Name);
 }

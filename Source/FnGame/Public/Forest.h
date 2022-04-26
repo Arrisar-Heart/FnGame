@@ -18,7 +18,7 @@ public:
   TArray<FString> GetPaths() const;
 
   UFUNCTION(BlueprintPure)
-  class USplineComponent* GetPathByName(const FString& Name) const;
+  class UFootpath* GetPathByName(const FString& Name) const;
 
   virtual void PostInitializeComponents() override;
 
@@ -35,7 +35,7 @@ public:
   FORCEINLINE class AMainGM* GetGM() const { return GM; }
 
 private:
-  TMap<FString, class USplineComponent*> Paths;
+  TMap<FString, class UFootpath*> Paths;
 
   UPROPERTY(VisibleDefaultsOnly, BlueprintGetter = GetRoot)
   class USceneComponent* Root;
