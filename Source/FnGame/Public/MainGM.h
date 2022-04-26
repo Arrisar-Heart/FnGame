@@ -13,7 +13,7 @@ class FNGAME_API AMainGM : public AGameMode
 
 public:
   UFUNCTION(BlueprintCallable)
-  bool TryToSpawnAnimal(const FString& PathName) const;
+  bool TryToSpawnAnimal(const FString& PathName);
 
   UFUNCTION(BlueprintGetter)
   FORCEINLINE TSubclassOf<class UMainUI> GetMainUIClass() const { return MainUIClass; }

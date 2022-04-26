@@ -14,19 +14,13 @@ class FNGAME_API AForest : public AActor
 public:
   AForest();
 
-  UFUNCTION(BlueprintPure)
-  TArray<FString> GetPaths() const;
-
-  UFUNCTION(BlueprintPure)
-  class UFootpath* GetPathByName(const FString& Name) const;
-
   virtual void PostInitializeComponents() override;
 
   UFUNCTION(BlueprintGetter)
   FORCEINLINE class USceneComponent* GetRoot() const { return Root; }
 
   UFUNCTION(BlueprintGetter)
-  FORCEINLINE class USceneComponent* GetPathsComponent() const { return PathsComponent; }
+  FORCEINLINE class USceneComponent* GetPaths() const { return Paths; }
 
   UFUNCTION(BlueprintGetter)
   FORCEINLINE class UStaticMeshComponent* GetGround() const { return Ground; }
@@ -38,13 +32,11 @@ protected:
   virtual void BeginPlay() override;
 
 private:
-  TMap<FString, class UFootpath*> Paths;
-
   UPROPERTY(VisibleDefaultsOnly, BlueprintGetter = GetRoot)
   class USceneComponent* Root;
 
-  UPROPERTY(VisibleDefaultsOnly, BlueprintGetter = GetPathsComponent)
-  class USceneComponent* PathsComponent;
+  UPROPERTY(VisibleDefaultsOnly, BlueprintGetter = GetPaths)
+  class USceneComponent* Paths;
 
   UPROPERTY(VisibleDefaultsOnly, BlueprintGetter = GetGround)
   class UStaticMeshComponent* Ground;

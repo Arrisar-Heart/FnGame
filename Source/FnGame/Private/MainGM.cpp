@@ -2,9 +2,6 @@
 
 #include "MainGM.h"
 #include "MainUI.h"
-#include "Animal.h"
-#include "Forest.h"
-#include "Footpath.h"
 
 void AMainGM::BeginPlay()
 {
@@ -21,16 +18,9 @@ void AMainGM::BeginPlay()
   }
 }
 
-bool AMainGM::TryToSpawnAnimal(const FString& PathName) const
+bool AMainGM::TryToSpawnAnimal(const FString& PathName)
 {
   if (Forest == nullptr) { return false; }
-
-  UFootpath* Path = Forest->GetPathByName(PathName);
-
-  if (Path == nullptr) { return false; }
-
-  FTransform NewTransform = Path->GetTransformAtSplinePoint(0, ESplineCoordinateSpace::World);
-  AAnimal* NewAnimal = GetWorld()->SpawnActor<AAnimal>(Path->GetAnimalType(), NewTransform);
 
   return true;
 }
