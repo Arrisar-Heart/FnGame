@@ -2,7 +2,6 @@
 
 #include "Forest.h"
 #include "MainGM.h"
-#include "Components/SplineComponent.h"
 
 AForest::AForest()
 {
