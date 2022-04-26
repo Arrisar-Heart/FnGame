@@ -11,4 +11,21 @@ class FNGAME_API AMainGM : public AGameMode
 {
   GENERATED_BODY()
 
+public:
+  UFUNCTION(BlueprintGetter)
+  FORCEINLINE TSubclassOf<class UMainUI> GetMainUIClass() const { return MainUIClass; }
+
+  UFUNCTION(BlueprintGetter)
+  FORCEINLINE class UMainUI* GetMainUI() const { return MainUI; }
+
+protected:
+  virtual void BeginPlay() override;
+
+private:
+  UPROPERTY(EditDefaultsOnly, BlueprintGetter = GetMainUIClass)
+  TSubclassOf<class UMainUI> MainUIClass;
+
+  UPROPERTY(BlueprintGetter = GetMainUI)
+  class UMainUI* MainUI;
+
 };
