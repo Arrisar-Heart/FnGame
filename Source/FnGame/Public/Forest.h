@@ -20,6 +20,8 @@ public:
   UFUNCTION(BlueprintPure)
   class USplineComponent* GetPathByName(const FString& Name) const;
 
+  virtual void PostInitializeComponents() override;
+
   UFUNCTION(BlueprintGetter)
   FORCEINLINE class USceneComponent* GetRoot() const { return Root; }
 
@@ -31,9 +33,6 @@ public:
 
   UFUNCTION(BlueprintGetter)
   FORCEINLINE class AMainGM* GetGM() const { return GM; }
-
-protected:
-  virtual void BeginPlay() override;
 
 private:
   TMap<FString, class USplineComponent*> Paths;

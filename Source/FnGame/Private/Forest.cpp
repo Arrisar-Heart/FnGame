@@ -18,9 +18,9 @@ AForest::AForest()
   Ground->SetupAttachment(RootComponent);
 }
 
-void AForest::BeginPlay()
+void AForest::PostInitializeComponents()
 {
-  Super::BeginPlay();
+  Super::PostInitializeComponents();
 
   TArray<USceneComponent*> RawComponents;
   PathsComponent->GetChildrenComponents(false, RawComponents);
