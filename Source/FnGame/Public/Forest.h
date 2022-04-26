@@ -14,4 +14,40 @@ class FNGAME_API AForest : public AActor
 public:
   AForest();
 
+  UFUNCTION(BlueprintPure)
+  TArray<FString> GetPaths() const;
+
+  UFUNCTION(BlueprintPure)
+  class USplineComponent* GetPathByName(const FString& Name) const;
+
+  UFUNCTION(BlueprintGetter)
+  FORCEINLINE class USceneComponent* GetRoot() const { return Root; }
+
+  UFUNCTION(BlueprintGetter)
+  FORCEINLINE class USceneComponent* GetPathsComponent() const { return PathsComponent; }
+
+  UFUNCTION(BlueprintGetter)
+  FORCEINLINE class UStaticMeshComponent* GetGround() const { return Ground; }
+
+  UFUNCTION(BlueprintGetter)
+  FORCEINLINE class AMainGM* GetGM() const { return GM; }
+
+protected:
+  virtual void BeginPlay() override;
+
+private:
+  TMap<FString, class USplineComponent*> Paths;
+
+  UPROPERTY(VisibleDefaultsOnly, BlueprintGetter = GetRoot)
+  class USceneComponent* Root;
+
+  UPROPERTY(VisibleDefaultsOnly, BlueprintGetter = GetPathsComponent)
+  class USceneComponent* PathsComponent;
+
+  UPROPERTY(VisibleDefaultsOnly, BlueprintGetter = GetGround)
+  class UStaticMeshComponent* Ground;
+
+  UPROPERTY(BlueprintGetter = GetGM, meta=(BlueprintProtected = "true"))
+  class AMainGM* GM;
+
 };
