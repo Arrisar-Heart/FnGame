@@ -3,6 +3,7 @@
 #include "MainGM.h"
 #include "MainUI.h"
 #include "Forest.h"
+#include "Animal.h"
 
 void AMainGM::BeginPlay()
 {
@@ -25,6 +26,16 @@ bool AMainGM::TryToSpawnAnimal(const FString& PathName)
 
   FFootpath Footpath;
   if (!Forest->GetFootpathByName(PathName, Footpath)) { return false; }
+
+  if (Footpath.Path == nullptr || Footpath.AnimalType == nullptr) { return false; }
+
+  FTransform AnimalTransform = Footpath.Path->GetTransformAtSplinePoint(0, ESplineCoordinateSpace::World);
+  AAnimal* Animal = GetWorld()->SpawnActor<AAnimal>(Footpath.AnimalType, AnimalTransform);
+
+  if (Animal == nullptr) { return false; }
+
+  Animal->OnSpawn();
+  Animal->SetPath(Footpath.Path);
 
   return true;
 }

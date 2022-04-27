@@ -14,17 +14,37 @@ class FNGAME_API AAnimal : public AActor
 public:
   AAnimal();
 
+  virtual void Tick(float DeltaTime) override;
+
   UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
   void OnSpawn();
 
   UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
   void OnDespawn();
 
+  UFUNCTION(BlueprintCallable, BlueprintSetter)
+  virtual void SetPath(class USplineComponent* Path = nullptr);
+
   UFUNCTION(BlueprintGetter)
   FORCEINLINE class USceneComponent* GetRoot() const { return Root; }
 
   UFUNCTION(BlueprintGetter)
   FORCEINLINE class UStaticMeshComponent* GetBody() const { return Body; }
+
+  UPROPERTY(EditAnywhere, BlueprintReadWrite)
+  float MoveSpeed = 15.f;
+
+  UPROPERTY(EditAnywhere, BlueprintReadWrite)
+  bool bMoveBackward = false;
+
+protected:
+  virtual void Move(float DeltaTime);
+
+  UPROPERTY(BlueprintSetter = SetPath)
+  class USplineComponent* Path;
+
+  UPROPERTY(BlueprintReadOnly)
+  float PathDistance;
 
 private:
   UPROPERTY(VisibleDefaultsOnly, BlueprintGetter = GetRoot)
