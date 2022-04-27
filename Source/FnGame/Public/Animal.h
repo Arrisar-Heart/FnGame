@@ -34,7 +34,7 @@ public:
   UFUNCTION(BlueprintGetter)
   FORCEINLINE class UStaticMeshComponent* GetBody() const { return Body; }
 
-  UPROPERTY(EditAnywhere, BlueprintReadWrite)
+  UPROPERTY(BlueprintReadWrite)
   float MoveSpeed;
 
   UPROPERTY(EditAnywhere, BlueprintReadWrite)
