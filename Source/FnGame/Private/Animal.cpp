@@ -34,9 +34,9 @@ void AAnimal::Move(float DeltaTime)
   PathDistance += DeltaTime * MoveSpeed;
 
   FVector NextLocation = Path->GetLocationAtDistanceAlongSpline(PathDistance, ESplineCoordinateSpace::World);
-  FQuat NextRotation = FVector(Path->GetWorldDirectionAtDistanceAlongSpline(PathDistance) * (bMoveBackward ? -1 : 1)).Rotation().Quaternion();
+  FVector NextDirection = FVector(Path->GetWorldDirectionAtDistanceAlongSpline(PathDistance) * (MoveSpeed >= 0 ? 1 : -1) * (bMoveBackward ? -1 : 1));
 
-  SetActorLocationAndRotation(NextLocation, NextRotation);
+  SetActorLocationAndRotation(NextLocation, NextDirection.Rotation().Quaternion());
 
   if (PathDistance >= Path->GetSplineLength())
   {
