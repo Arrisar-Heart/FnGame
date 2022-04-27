@@ -44,7 +44,7 @@ protected:
   virtual void Move(float DeltaTime);
 
   UPROPERTY(EditAnywhere, BlueprintGetter = GetBaseMoveSpeed)
-  float BaseMoveSpeed = 15.f;
+  float BaseMoveSpeed = 50.f;
 
   UPROPERTY(BlueprintSetter = SetPath)
   class USplineComponent* Path;
