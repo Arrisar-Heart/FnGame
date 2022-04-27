@@ -16,17 +16,17 @@ public:
 
   virtual void Tick(float DeltaTime) override;
 
-  UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+  UFUNCTION(BlueprintImplementableEvent)
   void OnSpawn();
 
-  UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+  UFUNCTION(BlueprintImplementableEvent)
   void OnDespawn();
 
-  UFUNCTION(BlueprintCallable, BlueprintSetter)
+  UFUNCTION(BlueprintSetter)
   virtual void SetPath(class USplineComponent* Path = nullptr);
 
   UFUNCTION(BlueprintGetter)
-  float GetBaseMoveSpeed() const { return BaseMoveSpeed; }
+  FORCEINLINE float GetBaseMoveSpeed() const { return BaseMoveSpeed; }
 
   UFUNCTION(BlueprintGetter)
   FORCEINLINE class USceneComponent* GetRoot() const { return Root; }
