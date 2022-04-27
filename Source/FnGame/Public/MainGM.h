@@ -15,6 +15,9 @@ public:
   UFUNCTION(BlueprintCallable)
   bool TryToSpawnAnimal(const FString& PathName);
 
+  UFUNCTION(BlueprintCallable)
+  void IncrementScore() { Score++; }
+
   UFUNCTION(BlueprintGetter)
   FORCEINLINE TSubclassOf<class UMainUI> GetMainUIClass() const { return MainUIClass; }
 
@@ -26,6 +29,12 @@ public:
 
 protected:
   virtual void BeginPlay() override;
+
+  UPROPERTY(BlueprintReadWrite, meta=(BlueprintProtected = "true"))
+  bool bOverheat = false;
+
+  UPROPERTY(BlueprintReadOnly)
+  int32 Score = 0;
 
 private:
   UPROPERTY(EditDefaultsOnly, BlueprintGetter = GetMainUIClass)

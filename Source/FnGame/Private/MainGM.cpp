@@ -22,6 +22,8 @@ void AMainGM::BeginPlay()
 
 bool AMainGM::TryToSpawnAnimal(const FString& PathName)
 {
+  if (bOverheat) { return false; }
+
   if (Footpaths == nullptr) { return false; }
 
   FFootpath Footpath;
@@ -36,6 +38,8 @@ bool AMainGM::TryToSpawnAnimal(const FString& PathName)
 
   Animal->OnSpawn();
   Animal->SetPath(Footpath.Path);
+
+  bOverheat = true;
 
   return true;
 }

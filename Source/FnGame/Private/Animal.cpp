@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Animal.h"
+#include "MainGM.h"
 #include "Components/SplineComponent.h"
 
 AAnimal::AAnimal()
@@ -40,6 +41,7 @@ void AAnimal::Move(float DeltaTime)
 
   if (PathDistance >= Path->GetSplineLength())
   {
+    GetWorld()->GetAuthGameMode<AMainGM>()->IncrementScore();
     OnDespawn();
     SetPath();
   }
