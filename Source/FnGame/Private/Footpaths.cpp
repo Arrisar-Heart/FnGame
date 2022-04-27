@@ -1,39 +1,33 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Forest.h"
+#include "Footpaths.h"
 #include "MainGM.h"
 
-AForest::AForest()
+AFootpaths::AFootpaths()
 {
   PrimaryActorTick.bCanEverTick = true;
 
   Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
   RootComponent = Root;
-
-  Paths = CreateDefaultSubobject<USceneComponent>(TEXT("Paths"));
-  Paths->SetupAttachment(RootComponent);
-
-  Ground = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Body"));
-  Ground->SetupAttachment(RootComponent);
 }
 
-void AForest::PostInitializeComponents()
+void AFootpaths::PostInitializeComponents()
 {
   Super::PostInitializeComponents();
 
   GM = GetWorld()->GetAuthGameMode<AMainGM>();
 }
 
-void AForest::BeginPlay()
+void AFootpaths::BeginPlay()
 {
   Super::BeginPlay();
 
-  GM->Forest = this;
+  GM->Footpaths = this;
 }
 
-bool AForest::GetFootpathByName(const FString& Name, FFootpath& Footpath) const
+bool AFootpaths::GetFootpathByName(const FString& Name, FFootpath& Footpath) const
 {
-  const FFootpath* RawFootpath = Footpaths.Find(Name);
+  const FFootpath* RawFootpath = Data.Find(Name);
 
   if (RawFootpath == nullptr) { return false; }
 

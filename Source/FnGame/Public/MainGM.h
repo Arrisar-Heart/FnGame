@@ -22,7 +22,7 @@ public:
   FORCEINLINE class UMainUI* GetMainUI() const { return MainUI; }
 
   UPROPERTY(BlueprintReadWrite)
-  class AForest* Forest;
+  class AFootpaths* Footpaths;
 
 protected:
   virtual void BeginPlay() override;

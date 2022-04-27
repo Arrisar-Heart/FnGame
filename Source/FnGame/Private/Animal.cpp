@@ -7,6 +7,8 @@ AAnimal::AAnimal()
 {
   PrimaryActorTick.bCanEverTick = true;
 
+  MoveSpeed = BaseMoveSpeed;
+
   Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
   RootComponent = Root;
 

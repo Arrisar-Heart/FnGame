@@ -2,7 +2,7 @@
 
 #include "MainGM.h"
 #include "MainUI.h"
-#include "Forest.h"
+#include "Footpaths.h"
 #include "Animal.h"
 
 void AMainGM::BeginPlay()
@@ -22,10 +22,10 @@ void AMainGM::BeginPlay()
 
 bool AMainGM::TryToSpawnAnimal(const FString& PathName)
 {
-  if (Forest == nullptr) { return false; }
+  if (Footpaths == nullptr) { return false; }
 
   FFootpath Footpath;
-  if (!Forest->GetFootpathByName(PathName, Footpath)) { return false; }
+  if (!Footpaths->GetFootpathByName(PathName, Footpath)) { return false; }
 
   if (Footpath.Path == nullptr || Footpath.AnimalType == nullptr) { return false; }
 
