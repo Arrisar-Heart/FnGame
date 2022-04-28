@@ -6,7 +6,7 @@
 #include "GameFramework/GameMode.h"
 #include "MainGM.generated.h"
 
-UCLASS(Abstract)
+UCLASS()
 class FNGAME_API AMainGM : public AGameMode
 {
   GENERATED_BODY()
@@ -30,7 +30,10 @@ public:
 protected:
   virtual void BeginPlay() override;
 
-  UPROPERTY(BlueprintReadWrite, meta=(BlueprintProtected = "true"))
+  UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta=(BlueprintProtected = "true"))
+  float SpawnRate = 1.f;
+
+  UPROPERTY(BlueprintReadOnly)
   bool bOverheat = false;
 
   UPROPERTY(BlueprintReadOnly)

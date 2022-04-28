@@ -2,8 +2,8 @@
 
 #include "MainGM.h"
 #include "MainUI.h"
-#include "Footpaths.h"
 #include "Animal.h"
+#include "Footpaths.h"
 
 void AMainGM::BeginPlay()
 {
@@ -40,6 +40,9 @@ bool AMainGM::TryToSpawnAnimal(const FString& PathName)
   Animal->SetPath(Footpath.Path);
 
   bOverheat = true;
+
+  FTimerHandle TimerHandle;
+  GetWorldTimerManager().SetTimer(TimerHandle, [this]() { bOverheat = false; }, SpawnRate, false);
 
   return true;
 }
