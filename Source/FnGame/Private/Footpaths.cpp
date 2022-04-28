@@ -11,15 +11,10 @@ AFootpaths::AFootpaths()
   RootComponent = Root;
 }
 
-void AFootpaths::PostInitializeComponents()
-{
-  Super::PostInitializeComponents();
-
-  GM = GetWorld()->GetAuthGameMode<AMainGM>();
-}
-
 void AFootpaths::BeginPlay()
 {
+  GM = GetWorld()->GetAuthGameMode<AMainGM>();
+
   Super::BeginPlay();
 
   GM->Footpaths = this;

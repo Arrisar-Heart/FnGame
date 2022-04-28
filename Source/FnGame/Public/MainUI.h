@@ -6,7 +6,7 @@
 #include "Blueprint/UserWidget.h"
 #include "MainUI.generated.h"
 
-UCLASS()
+UCLASS(Abstract)
 class FNGAME_API UMainUI : public UUserWidget
 {
   GENERATED_BODY()

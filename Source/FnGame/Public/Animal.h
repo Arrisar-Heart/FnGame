@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Animal.generated.h"
 
-UCLASS()
+UCLASS(Abstract)
 class FNGAME_API AAnimal : public AActor
 {
   GENERATED_BODY()

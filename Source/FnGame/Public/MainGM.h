@@ -6,7 +6,7 @@
 #include "GameFramework/GameMode.h"
 #include "MainGM.generated.h"
 
-UCLASS()
+UCLASS(Abstract)
 class FNGAME_API AMainGM : public AGameMode
 {
   GENERATED_BODY()

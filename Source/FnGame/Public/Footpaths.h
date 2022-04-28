@@ -24,7 +24,7 @@ struct FFootpath
 
 };
 
-UCLASS()
+UCLASS(Abstract)
 class FNGAME_API AFootpaths : public AActor
 {
   GENERATED_BODY()
@@ -34,8 +34,6 @@ public:
 
   UFUNCTION(BlueprintPure)
   bool GetFootpathByName(const FString& Name, FFootpath& Footpath) const;
-
-  virtual void PostInitializeComponents() override;
 
   UFUNCTION(BlueprintGetter)
   FORCEINLINE class USceneComponent* GetRoot() const { return Root; }
